@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 const int nmax = 300000;
+const int Max = 1000000000;
 struct av {
     int h, x;
     unsigned d;
@@ -16,17 +17,16 @@ int main() {
     for (i = 0; i < N; i++) {
         cin >> a[i].h >> a[i].x >> a[i].d;
     }
-    while (im<1000) {
+    while (im<10) {
         cnt = 0; // Обнуляем cnt перед подсчётом
 
         for (i = 0; i < N; i++) {
-            for (j=0; j<nmax; j++){
-                if (a[i].x >= i1 && a[i].x <= i2)
-                    if(a[i].h >= i2){ 
-                        cnt++;
-                        goto next;
-                    }
-                    else goto next;
+            for (j=0; j<Max; j++) {
+                if (a[i].x >= i1 && a[i].x <= i2 && a[i].h >= i2){
+                    cnt++;
+                    goto next;
+                }
+                if (a[i].h < i2) goto next;
                 i1--; i2++;
             }
         next:
@@ -35,7 +35,6 @@ int main() {
             i1=-1; i2=1;
         }
         if (MaxCount <= cnt) MaxCount = cnt;
-        //else break;
         im++;
     }
     cout << "Максимальное количество: " << MaxCount << endl;
