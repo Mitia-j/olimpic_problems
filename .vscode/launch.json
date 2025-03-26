@@ -10,7 +10,6 @@
             "cwd": "${fileDirname}",
             "environment": [],
             "console": "integratedTerminal",
-            // "debug.inlineValues": "on",
             "preLaunchTask": "C/C++: cl.exe build active file"
         }
     ],
